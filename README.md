@@ -320,24 +320,30 @@
   </div>
 
   <div class="section">
-    <p class="section-label">01 — la verdad</p>
+    <p class="section-label">- La verdad</p>
     <p>
-      Te fallé. No hay forma más simple ni más honesta de decirlo. 
+      Te fallé, y sé que no hay forma más "Facil" de solucionar ésto. 
       Tomé decisiones que te lastimaron, y no puedo borrarlas, 
-      no puedo deshacer lo que hice. Pero sí puedo estar aquí, 
-      sin excusas, <strong>diciéndote que lo siento con cada parte de mí.</strong>
+      Sé que es muy difícil perdonarme por lo que hice, pero quisiera que me des otra
+      oportunidad para demostrarte que de verdad te quiero, que de verdad te amo, 
+      sin excusas, <strong> Estoy diciéndote que lo siento con cada parte de mí.</strong>
     </p>
   </div>
 
   <div class="divider" style="animation-delay: 0.8s"><span class="divider-icon">✦</span></div>
 
   <div class="section">
-    <p class="section-label">02 — lo que siento</p>
+    <p class="section-label"> — lo que siento</p>
     <p>
-      Hubo cosas que no supe manejar, situaciones que me atraparon 
-      y en las que tomé el camino equivocado. Eso no te lo mereces. 
+      Hubieron cosas que no supe cómo manejar de manera correcta, situaciones que se me 
+      salieron de las manos, y aunque pude haberlo evitado, realmente no supe cómo.
+       No te mereces nada de lo que te he hecho, ya que eres una chica demasiado buena
+      y realmente te quiero demasiado, eres una chica que de verdad revivió cosas muertas en mí
+      así como yo en tí, me gusta cómo me tratas y cómo somos ambos juntos, si no te pedí para
+      ser novios, fue porque quería hacerte una carta como ésta que esté bien hecha pero
+      lastimosamente no se me dió.
       <em>Tú te mereces a alguien que te elija siempre, incluso cuando es difícil.</em>
-      Y quiero ser esa persona. Quiero aprender a serlo.
+      Y quiero ser esa persona. Quiero aprender a serlo. Y quiero serlo sólo para tí.
     </p>
   </div>
 
@@ -351,11 +357,11 @@
   </div>
 
   <div class="section">
-    <p class="section-label">03 — lo que eres para mí</p>
+    <p class="section-label"> — Lo que eres para mí</p>
     <p>
       Eres la persona con quien quiero construir cosas. 
-      No sé si en un servidor de Minecraft o en la vida real, 
-      pero quiero construir <strong>contigo.</strong> 
+      Sea cual sea el lugar, en Mexico, en Brasil, en Minecraft, donde sea, 
+      pero quiero construirlo <strong>contigo.</strong> 
       Quiero seguir descubriendo canciones juntos, 
       quiero estar cuando estés bien y cuando no estés tan bien. 
       <em>Quiero ser tuyo, Mar, de verdad.</em>
@@ -363,18 +369,20 @@
   </div>
 
   <div class="quote-block">
-    <p>"we used to be closer than this"</p>
+    <p>"You are formidable to me
+Cause you seem to know it, where you wanna go"</p>
     <cite>— Twenty One Pilots, Formidable</cite>
   </div>
 
   <div class="section">
-    <p class="section-label">04 — lo que pido</p>
+    <p class="section-label">— Lo que pido</p>
     <p>
       No te pido que olvides. Te pido que me dejes 
       <strong>demostrarte</strong> que puedo ser mejor. 
       Que lo que siento por ti es más grande que mis errores. 
       Que el resto de mis días tiene mucho más sentido 
-      si los vivo a tu lado.
+      si los vivo a tu lado, ya que estando a tu lado, me siento más seguro
+      más cómodo, me siento feliz estando contigo...
     </p>
   </div>
 
@@ -383,7 +391,7 @@
       quiero estar contigo<br/>
       <strong>el resto de mis días.</strong>
     </p>
-    <p class="signature">con todo lo que soy — para Mar 🌊</p>
+    <p class="signature">con todo lo que soy — para mi niña de ojitos lindos 💜</p>
   </div>
 
 </div>
