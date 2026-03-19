@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+
 <html lang="es">
 <head>
 <meta charset="UTF-8">
@@ -433,12 +433,14 @@
 <!-- HERO -->
 <section class="hero">
   <div class="ornament">✦ ✦ ✦</div>
-  <p class="hero-eyebrow">Una pregunta especial · Para ti</p>
+  <p class="hero-eyebrow">Hoy es un día especial para ambos...</p>
   <h1 class="hero-name"><span>M</span>ar</h1>
-  <p class="hero-subtitle">hay algo que quiero preguntarte</p>
+  <p class="hero-subtitle"></p>
   <div class="divider"><span class="divider-heart">♥</span></div>
   <p style="font-size:1.15rem; font-style:italic; color:var(--burgundy); max-width:400px; line-height:1.8; animation: fadeUp 2.2s ease both;">
-    Desde el primer momento contigo,<br>supe que eras algo diferente.
+    Desde el primer momento contigo,<br>supe que eras algo diferente, algo que me gustaba pero que no podía explicar,
+    algo que simplemente me encantaba, me encantaba/encanta estár contigo, a cada momento, a cada hora, a cada segundo,
+    cada momento contigo me gusta demasiado. .
   </p>
 </section>
 
@@ -495,7 +497,7 @@
 <section class="message-section">
   <p class="message-text">
     Cada vez que estamos juntos, el mundo se vuelve
-    <em>un poco más bonito</em>.<br><br>
+    <em> más bonito</em>.<br><br>
     Me haces reír cuando menos lo espero,
     me das calma cuando todo se siente difícil.<br><br>
     Contigo, todo simplemente <em>tiene más sentido</em>.
@@ -505,7 +507,8 @@
 <!-- QUESTION -->
 <section class="question-section">
   <div class="divider" style="margin-bottom:40px;"><span class="divider-heart">♥</span></div>
-  <h2 class="question-text">¿Quieres ser<br>mi novia?</h2>
+  <h2 class="question-text">Y con la mano en el corazón, me gustaría preguntarte
+  ¿Puedo ser tu novio?</h2>
   <p class="question-sub">Mar · con todo mi corazón</p>
   <div class="buttons">
     <button class="btn-yes" onclick="sayYes()">Sí, quiero 💕</button>
