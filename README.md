@@ -548,8 +548,7 @@
     </div>
   </div>
 
-  <p style="font-family:'Montserrat',sans-serif; font-size:0.7rem; letter-spacing:3px; color:var(--gold); margin-top:-20px; margin-bottom:8px;">
-    ¿Tenés fotos en internet? <button onclick="showEmbedPanel()" style="background:none;border:none;color:var(--rose);cursor:pointer;font-size:0.7rem;letter-spacing:2px;text-decoration:underline;font-family:'Montserrat',sans-serif;"></button>
+  <p style="font-family:'Montserrat',sans-serif; font-size:0.7rem; letter-spacing:3px; color:var(--gold); margin-top:-20px; margin-bottom:8px;"><button onclick="showEmbedPanel()" style="background:none;border:none;color:var(--rose);cursor:pointer;font-size:0.7rem;letter-spacing:2px;text-decoration:underline;font-family:'Montserrat',sans-serif;"></button>
   </p>
 </section>
 
