@@ -1,444 +1,590 @@
+<!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Para Mar 🌊</title>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Space+Mono:ital@0;1&display=swap" rel="stylesheet"/>
-  <style>
-    :root {
-      --deep: #0a0e1a;
-      --ocean: #0d2137;
-      --blue: #1a4a6e;
-      --glow: #4fc3f7;
-      --soft: #a8d8ea;
-      --white: #e8f4f8;
-      --gold: #c9a96e;
-      --dim: rgba(79,195,247,0.12);
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Para Mar 🌸</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #fdf6f0;
+    --blush: #e8b4b8;
+    --rose: #c2606a;
+    --burgundy: #7a2634;
+    --gold: #c9a96e;
+    --dark: #2a1a1f;
+    --text: #3d2028;
+  }
 
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
 
-    body {
-      background: var(--deep);
-      color: var(--white);
-      font-family: 'Cormorant Garamond', serif;
-      min-height: 100vh;
-      overflow-x: hidden;
-      cursor: crosshair;
-    }
+  body {
+    background: var(--cream);
+    color: var(--text);
+    font-family: 'Cormorant Garamond', serif;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
 
-    /* Starfield */
-    .stars {
-      position: fixed;
-      inset: 0;
-      z-index: 0;
-      pointer-events: none;
-    }
-    .star {
-      position: absolute;
-      border-radius: 50%;
-      background: white;
-      animation: twinkle var(--d) ease-in-out infinite alternate;
-    }
-    @keyframes twinkle {
-      from { opacity: 0.1; transform: scale(1); }
-      to   { opacity: 0.9; transform: scale(1.4); }
-    }
+  /* Petals */
+  .petal {
+    position: fixed;
+    top: -20px;
+    pointer-events: none;
+    font-size: 1.2rem;
+    animation: fall linear infinite;
+    opacity: 0.6;
+    z-index: 0;
+  }
+  @keyframes fall {
+    0%   { transform: translateY(-20px) rotate(0deg); opacity: 0; }
+    10%  { opacity: 0.6; }
+    90%  { opacity: 0.4; }
+    100% { transform: translateY(110vh) rotate(360deg); opacity: 0; }
+  }
 
-    /* Floating pixels (Minecraft reference) */
-    .pixels {
-      position: fixed;
-      inset: 0;
-      z-index: 0;
-      pointer-events: none;
-    }
-    .pixel {
-      position: absolute;
-      width: 6px;
-      height: 6px;
-      background: var(--glow);
-      opacity: 0;
-      animation: floatPixel var(--d) ease-in-out infinite;
-      animation-delay: var(--delay);
-      image-rendering: pixelated;
-    }
-    @keyframes floatPixel {
-      0%   { opacity: 0; transform: translateY(0) rotate(0deg); }
-      20%  { opacity: 0.5; }
-      80%  { opacity: 0.3; }
-      100% { opacity: 0; transform: translateY(-120px) rotate(90deg); }
-    }
+  /* HERO */
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 60px 20px;
+    background:
+      radial-gradient(ellipse at 20% 30%, rgba(232,180,184,0.18) 0%, transparent 60%),
+      radial-gradient(ellipse at 80% 70%, rgba(194,96,106,0.12) 0%, transparent 55%),
+      var(--cream);
+  }
 
-    /* Main wrapper */
-    .container {
-      position: relative;
-      z-index: 1;
-      max-width: 680px;
-      margin: 0 auto;
-      padding: 80px 32px 120px;
-    }
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      radial-gradient(circle, rgba(201,169,110,0.08) 1px, transparent 1px);
+    background-size: 40px 40px;
+    pointer-events: none;
+  }
 
-    /* Header */
-    .header {
-      text-align: center;
-      margin-bottom: 80px;
-      opacity: 0;
-      animation: fadeUp 1.2s ease forwards 0.3s;
-    }
-    .header .eyebrow {
-      font-family: 'Space Mono', monospace;
-      font-size: 0.7rem;
-      letter-spacing: 0.3em;
-      color: var(--glow);
-      text-transform: uppercase;
-      margin-bottom: 20px;
-    }
-    .header h1 {
-      font-size: clamp(3.5rem, 10vw, 6rem);
-      font-weight: 300;
-      font-style: italic;
-      line-height: 0.9;
-      letter-spacing: -0.02em;
-      color: var(--white);
-    }
-    .header h1 span {
-      color: var(--glow);
-      display: block;
-    }
-    .header .subtitle {
-      margin-top: 24px;
-      font-size: 1rem;
-      font-style: italic;
-      color: var(--soft);
-      opacity: 0.7;
-      letter-spacing: 0.05em;
-    }
+  .ornament {
+    font-size: 1.6rem;
+    color: var(--gold);
+    letter-spacing: 12px;
+    margin-bottom: 24px;
+    animation: fadeUp 1.2s ease both;
+  }
 
-    /* Divider */
-    .divider {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-      margin: 48px 0;
-      opacity: 0;
-      animation: fadeUp 1s ease forwards;
-    }
-    .divider::before, .divider::after {
-      content: '';
-      flex: 1;
-      height: 1px;
-      background: linear-gradient(90deg, transparent, var(--glow), transparent);
-    }
-    .divider-icon {
-      font-size: 1rem;
-      color: var(--gold);
-    }
+  .hero-eyebrow {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 300;
+    font-size: 0.75rem;
+    letter-spacing: 6px;
+    text-transform: uppercase;
+    color: var(--rose);
+    margin-bottom: 16px;
+    animation: fadeUp 1.4s ease both;
+  }
 
-    /* Sections */
-    .section {
-      margin-bottom: 64px;
-      opacity: 0;
-      animation: fadeUp 1s ease forwards;
-    }
-    .section:nth-child(2) { animation-delay: 0.6s; }
-    .section:nth-child(3) { animation-delay: 0.9s; }
-    .section:nth-child(4) { animation-delay: 1.2s; }
-    .section:nth-child(5) { animation-delay: 1.5s; }
-    .section:nth-child(6) { animation-delay: 1.8s; }
+  .hero-name {
+    font-size: clamp(4rem, 14vw, 9rem);
+    font-weight: 300;
+    font-style: italic;
+    line-height: 1;
+    color: var(--dark);
+    margin-bottom: 8px;
+    animation: fadeUp 1.6s ease both;
+  }
 
-    .section-label {
-      font-family: 'Space Mono', monospace;
-      font-size: 0.6rem;
-      letter-spacing: 0.35em;
-      text-transform: uppercase;
-      color: var(--glow);
-      margin-bottom: 16px;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-    .section-label::after {
-      content: '';
-      flex: 1;
-      height: 1px;
-      background: var(--dim);
-      max-width: 60px;
-    }
+  .hero-name span {
+    color: var(--rose);
+  }
 
-    .section p {
-      font-size: 1.25rem;
-      font-weight: 300;
-      line-height: 1.9;
-      color: var(--white);
-      opacity: 0.9;
-    }
-    .section p em {
-      font-style: italic;
-      color: var(--soft);
-    }
-    .section p strong {
-      font-weight: 400;
-      color: var(--glow);
-    }
+  .hero-subtitle {
+    font-size: clamp(1rem, 3vw, 1.5rem);
+    font-weight: 300;
+    font-style: italic;
+    color: var(--burgundy);
+    margin-bottom: 40px;
+    animation: fadeUp 1.8s ease both;
+  }
 
-    /* Quote block */
-    .quote-block {
-      border-left: 2px solid var(--gold);
-      padding: 24px 32px;
-      margin: 48px 0;
-      background: rgba(201, 169, 110, 0.04);
-      opacity: 0;
-      animation: fadeUp 1s ease forwards 1.4s;
-    }
-    .quote-block p {
-      font-size: 1.4rem;
-      font-style: italic;
-      font-weight: 300;
-      line-height: 1.7;
-      color: var(--gold);
-    }
-    .quote-block cite {
-      display: block;
-      margin-top: 12px;
-      font-family: 'Space Mono', monospace;
-      font-size: 0.65rem;
-      letter-spacing: 0.2em;
-      color: var(--soft);
-      opacity: 0.5;
-    }
+  .divider {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin: 32px auto;
+    width: fit-content;
+    animation: fadeUp 2s ease both;
+  }
+  .divider::before, .divider::after {
+    content: '';
+    width: 80px;
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--gold));
+  }
+  .divider::after { background: linear-gradient(to left, transparent, var(--gold)); }
+  .divider-heart { color: var(--rose); font-size: 1rem; }
 
-    /* Minecraft block */
-    .minecraft-block {
-      display: flex;
-      align-items: center;
-      gap: 20px;
-      padding: 28px;
-      border: 1px solid rgba(79,195,247,0.15);
-      background: rgba(13,33,55,0.6);
-      margin: 48px 0;
-      opacity: 0;
-      animation: fadeUp 1s ease forwards 1.6s;
-    }
-    .mc-icon {
-      font-size: 2.5rem;
-      flex-shrink: 0;
-      image-rendering: pixelated;
-      filter: drop-shadow(0 0 12px var(--glow));
-    }
-    .mc-text {
-      font-family: 'Space Mono', monospace;
-      font-size: 0.75rem;
-      line-height: 1.8;
-      color: var(--soft);
-      opacity: 0.8;
-    }
-    .mc-text strong {
-      color: var(--glow);
-      display: block;
-      font-size: 0.8rem;
-      margin-bottom: 4px;
-    }
+  /* PHOTOS SECTION */
+  .photos-section {
+    padding: 80px 20px;
+    max-width: 1000px;
+    margin: 0 auto;
+    text-align: center;
+  }
 
-    /* Final */
-    .final {
-      text-align: center;
-      padding: 64px 0 32px;
-      opacity: 0;
-      animation: fadeUp 1.2s ease forwards 2.1s;
-    }
-    .final .big-text {
-      font-size: clamp(2rem, 7vw, 3.5rem);
-      font-weight: 300;
-      font-style: italic;
-      line-height: 1.2;
-      color: var(--white);
-      margin-bottom: 32px;
-    }
-    .final .big-text strong {
-      color: var(--glow);
-      font-weight: 300;
-    }
-    .final .signature {
-      font-family: 'Space Mono', monospace;
-      font-size: 0.7rem;
-      letter-spacing: 0.3em;
-      color: var(--gold);
-      opacity: 0.6;
-      text-transform: uppercase;
-    }
+  .section-label {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 300;
+    font-size: 0.7rem;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 12px;
+  }
 
-    /* Glow orb */
-    .orb {
-      position: fixed;
-      width: 400px;
-      height: 400px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(79,195,247,0.08) 0%, transparent 70%);
-      pointer-events: none;
-      z-index: 0;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      animation: pulse 6s ease-in-out infinite;
-    }
-    @keyframes pulse {
-      0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.6; }
-      50%       { transform: translate(-50%, -50%) scale(1.3); opacity: 1; }
-    }
+  .section-title {
+    font-size: clamp(2rem, 5vw, 3.2rem);
+    font-weight: 300;
+    font-style: italic;
+    color: var(--dark);
+    margin-bottom: 48px;
+  }
 
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(30px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
+  .photos-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.3fr 1fr;
+    grid-template-rows: auto auto;
+    gap: 16px;
+    margin-bottom: 48px;
+  }
 
-    /* Heart cursor trail */
-    .heart-trail {
-      position: fixed;
-      pointer-events: none;
-      z-index: 999;
-      font-size: 14px;
-      animation: heartFade 1s ease forwards;
+  .photo-slot {
+    position: relative;
+    background: linear-gradient(135deg, #f5e6e8, #fdf0f2);
+    border: 1px solid rgba(201,169,110,0.3);
+    border-radius: 4px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+  }
+
+  .photo-slot:hover {
+    transform: translateY(-6px) scale(1.02);
+    box-shadow: 0 20px 50px rgba(122,38,52,0.12);
+  }
+
+  .photo-slot:nth-child(1) { grid-column: 1; grid-row: 1; aspect-ratio: 3/4; }
+  .photo-slot:nth-child(2) { grid-column: 2; grid-row: 1 / 3; aspect-ratio: 2/3; }
+  .photo-slot:nth-child(3) { grid-column: 3; grid-row: 1; aspect-ratio: 3/4; }
+  .photo-slot:nth-child(4) { grid-column: 1; grid-row: 2; aspect-ratio: 4/3; }
+  .photo-slot:nth-child(5) { grid-column: 3; grid-row: 2; aspect-ratio: 4/3; }
+
+  .photo-slot input[type="file"] {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    cursor: pointer;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+  }
+
+  .photo-placeholder {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    color: var(--blush);
+    transition: opacity 0.3s;
+  }
+
+  .photo-placeholder .icon { font-size: 2rem; }
+  .photo-placeholder p {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.65rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--rose);
+    opacity: 0.6;
+  }
+
+  .photo-slot img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: none;
+  }
+
+  /* MESSAGE */
+  .message-section {
+    background: linear-gradient(135deg, var(--burgundy), #5a1a22);
+    padding: 80px 40px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .message-section::before {
+    content: '❝';
+    position: absolute;
+    top: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 8rem;
+    color: rgba(255,255,255,0.04);
+    font-family: serif;
+    line-height: 1;
+  }
+
+  .message-text {
+    max-width: 680px;
+    margin: 0 auto;
+    font-size: clamp(1.3rem, 3vw, 1.8rem);
+    font-weight: 300;
+    font-style: italic;
+    line-height: 1.9;
+    color: #fce8ea;
+    position: relative;
+    z-index: 1;
+  }
+
+  .message-text em {
+    color: var(--blush);
+    font-style: normal;
+    font-weight: 400;
+  }
+
+  /* QUESTION */
+  .question-section {
+    padding: 100px 20px;
+    text-align: center;
+    background:
+      radial-gradient(ellipse at 50% 0%, rgba(232,180,184,0.2) 0%, transparent 60%),
+      var(--cream);
+  }
+
+  .question-text {
+    font-size: clamp(2.5rem, 7vw, 5.5rem);
+    font-weight: 300;
+    font-style: italic;
+    color: var(--dark);
+    margin-bottom: 16px;
+    line-height: 1.1;
+  }
+
+  .question-sub {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 300;
+    font-size: 0.85rem;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--rose);
+    margin-bottom: 60px;
+  }
+
+  .buttons {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .btn-yes {
+    background: linear-gradient(135deg, var(--rose), var(--burgundy));
+    color: white;
+    border: none;
+    padding: 18px 56px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.4rem;
+    font-style: italic;
+    cursor: pointer;
+    border-radius: 2px;
+    letter-spacing: 2px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 8px 30px rgba(122,38,52,0.2);
+  }
+
+  .btn-yes:hover {
+    transform: translateY(-3px) scale(1.04);
+    box-shadow: 0 16px 40px rgba(122,38,52,0.35);
+  }
+
+  .btn-no {
+    background: transparent;
+    color: var(--rose);
+    border: 1px solid var(--blush);
+    padding: 18px 40px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    font-style: italic;
+    cursor: pointer;
+    border-radius: 2px;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+    position: relative;
+  }
+
+  /* YES SCREEN */
+  .yes-screen {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: linear-gradient(135deg, #fdf0f2, #fce8ea, #f5d5d8);
+    z-index: 100;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 40px;
+    animation: fadeIn 0.8s ease;
+  }
+
+  .yes-screen.active { display: flex; }
+
+  .yes-heart {
+    font-size: 6rem;
+    animation: heartbeat 1s ease infinite;
+    margin-bottom: 24px;
+  }
+
+  @keyframes heartbeat {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.15); }
+  }
+
+  .yes-title {
+    font-size: clamp(3rem, 9vw, 7rem);
+    font-weight: 300;
+    font-style: italic;
+    color: var(--burgundy);
+    margin-bottom: 16px;
+  }
+
+  .yes-sub {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 300;
+    font-size: 0.85rem;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    color: var(--rose);
+  }
+
+  .confetti-piece {
+    position: fixed;
+    top: -10px;
+    pointer-events: none;
+    font-size: 1.4rem;
+    animation: confetti-fall 3s linear infinite;
+    z-index: 101;
+  }
+
+  @keyframes confetti-fall {
+    0%   { transform: translateY(-10px) rotate(0deg); opacity: 1; }
+    100% { transform: translateY(105vh) rotate(720deg); opacity: 0; }
+  }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+  }
+
+  /* FOOTER */
+  footer {
+    text-align: center;
+    padding: 40px;
+    font-style: italic;
+    font-size: 0.9rem;
+    color: var(--blush);
+  }
+
+  @media (max-width: 600px) {
+    .photos-grid {
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: auto;
     }
-    @keyframes heartFade {
-      0%   { opacity: 0.9; transform: translateY(0) scale(1); }
-      100% { opacity: 0; transform: translateY(-40px) scale(0.5); }
-    }
-  </style>
+    .photo-slot:nth-child(1) { grid-column: 1; grid-row: 1; aspect-ratio: 1; }
+    .photo-slot:nth-child(2) { grid-column: 2; grid-row: 1 / 3; aspect-ratio: 2/3; }
+    .photo-slot:nth-child(3) { grid-column: 1; grid-row: 2; aspect-ratio: 1; }
+    .photo-slot:nth-child(4) { grid-column: 1; grid-row: 3; aspect-ratio: 4/3; }
+    .photo-slot:nth-child(5) { grid-column: 2; grid-row: 3; aspect-ratio: 4/3; }
+  }
+</style>
 </head>
 <body>
 
-<div class="stars" id="stars"></div>
-<div class="pixels" id="pixels"></div>
-<div class="orb"></div>
+<!-- Falling petals -->
+<div id="petals"></div>
 
-<div class="container">
+<!-- HERO -->
+<section class="hero">
+  <div class="ornament">✦ ✦ ✦</div>
+  <p class="hero-eyebrow">Una pregunta especial · Para ti</p>
+  <h1 class="hero-name"><span>M</span>ar</h1>
+  <p class="hero-subtitle">hay algo que quiero preguntarte</p>
+  <div class="divider"><span class="divider-heart">♥</span></div>
+  <p style="font-size:1.15rem; font-style:italic; color:var(--burgundy); max-width:400px; line-height:1.8; animation: fadeUp 2.2s ease both;">
+    Desde el primer momento contigo,<br>supe que eras algo diferente.
+  </p>
+</section>
 
-  <div class="header">
-    <p class="eyebrow">una carta para</p>
-    <h1>para<span>Mar.</span></h1>
-    <p class="subtitle">escrita desde el lugar más honesto que tengo</p>
-  </div>
+<!-- PHOTOS -->
+<section class="photos-section">
+  <p class="section-label">Nuestros momentos</p>
+  <h2 class="section-title">Los recuerdos que atesoro</h2>
 
-  <div class="section">
-    <p class="section-label">- La verdad</p>
-    <p>
-      Te fallé, y sé que no hay forma más "Facil" de solucionar ésto. 
-      Tomé decisiones que te lastimaron, y no puedo borrarlas, 
-      Sé que es muy difícil perdonarme por lo que hice, pero quisiera que me des otra
-      oportunidad para demostrarte que de verdad te quiero, que de verdad te amo, 
-      sin excusas, <strong> Estoy diciéndote que lo siento con cada parte de mí.</strong>
-    </p>
-  </div>
-
-  <div class="divider" style="animation-delay: 0.8s"><span class="divider-icon">✦</span></div>
-
-  <div class="section">
-    <p class="section-label"> — lo que siento</p>
-    <p>
-      Hubieron cosas que no supe cómo manejar de manera correcta, situaciones que se me 
-      salieron de las manos, y aunque pude haberlo evitado, realmente no supe cómo.
-       No te mereces nada de lo que te he hecho, ya que eres una chica demasiado buena
-      y realmente te quiero demasiado, eres una chica que de verdad revivió cosas muertas en mí
-      así como yo en tí, me gusta cómo me tratas y cómo somos ambos juntos, si no te pedí para
-      ser novios, fue porque quería hacerte una carta como ésta que esté bien hecha pero
-      lastimosamente no se me dió.
-      <em>Tú te mereces a alguien que te elija siempre, incluso cuando es difícil.</em>
-      Y quiero ser esa persona. Quiero aprender a serlo. Y quiero serlo sólo para tí.
-    </p>
-  </div>
-
-  <div class="minecraft-block">
-    <span class="mc-icon">⛏️</span>
-    <div class="mc-text">
-      <strong>[ primer encuentro — servidor de Minecraft ]</strong>
-      desde ese mundo de bloques y píxeles, sin saber que te estaba encontrando a ti.
-      que ese juego nos haya cruzado sigue siendo una de las cosas más bonitas que me han pasado.
+  <div class="photos-grid">
+    <div class="photo-slot" title="Agregar foto">
+      <input type="file" accept="image/*" onchange="loadPhoto(this)">
+      <div class="photo-placeholder">
+        <span class="icon">🌸</span>
+        <p>Agregar foto</p>
+      </div>
+      <img>
+    </div>
+    <div class="photo-slot" title="Agregar foto">
+      <input type="file" accept="image/*" onchange="loadPhoto(this)">
+      <div class="photo-placeholder">
+        <span class="icon">🌸</span>
+        <p>Agregar foto</p>
+      </div>
+      <img>
+    </div>
+    <div class="photo-slot" title="Agregar foto">
+      <input type="file" accept="image/*" onchange="loadPhoto(this)">
+      <div class="photo-placeholder">
+        <span class="icon">🌸</span>
+        <p>Agregar foto</p>
+      </div>
+      <img>
+    </div>
+    <div class="photo-slot" title="Agregar foto">
+      <input type="file" accept="image/*" onchange="loadPhoto(this)">
+      <div class="photo-placeholder">
+        <span class="icon">🌸</span>
+        <p>Agregar foto</p>
+      </div>
+      <img>
+    </div>
+    <div class="photo-slot" title="Agregar foto">
+      <input type="file" accept="image/*" onchange="loadPhoto(this)">
+      <div class="photo-placeholder">
+        <span class="icon">🌸</span>
+        <p>Agregar foto</p>
+      </div>
+      <img>
     </div>
   </div>
+</section>
 
-  <div class="section">
-    <p class="section-label"> — Lo que eres para mí</p>
-    <p>
-      Eres la persona con quien quiero construir cosas. 
-      Sea cual sea el lugar, en Mexico, en Brasil, en Minecraft, donde sea, 
-      pero quiero construirlo <strong>contigo.</strong> 
-      Quiero seguir descubriendo canciones juntos, 
-      quiero estar cuando estés bien y cuando no estés tan bien. 
-      <em>Quiero ser tuyo, Mar, de verdad.</em>
-    </p>
+<!-- MESSAGE -->
+<section class="message-section">
+  <p class="message-text">
+    Cada vez que estamos juntos, el mundo se vuelve
+    <em>un poco más bonito</em>.<br><br>
+    Me haces reír cuando menos lo espero,
+    me das calma cuando todo se siente difícil.<br><br>
+    Contigo, todo simplemente <em>tiene más sentido</em>.
+  </p>
+</section>
+
+<!-- QUESTION -->
+<section class="question-section">
+  <div class="divider" style="margin-bottom:40px;"><span class="divider-heart">♥</span></div>
+  <h2 class="question-text">¿Quieres ser<br>mi novia?</h2>
+  <p class="question-sub">Mar · con todo mi corazón</p>
+  <div class="buttons">
+    <button class="btn-yes" onclick="sayYes()">Sí, quiero 💕</button>
+    <button class="btn-no" id="noBtn" onmouseover="moveNo()" ontouchstart="moveNo()">Mmm...</button>
   </div>
+</section>
 
-  <div class="quote-block">
-    <p>"You are formidable to me
-Cause you seem to know it, where you wanna go"</p>
-    <cite>— Twenty One Pilots, Formidable</cite>
-  </div>
+<footer>hecho con amor, solo para ti ♥</footer>
 
-  <div class="section">
-    <p class="section-label">— Lo que pido</p>
-    <p>
-      No te pido que olvides. Te pido que me dejes 
-      <strong>demostrarte</strong> que puedo ser mejor. 
-      Que lo que siento por ti es más grande que mis errores. 
-      Que el resto de mis días tiene mucho más sentido 
-      si los vivo a tu lado, ya que estando a tu lado, me siento más seguro
-      más cómodo, me siento feliz estando contigo...
-    </p>
-  </div>
-
-  <div class="final">
-    <p class="big-text">
-      quiero estar contigo<br/>
-      <strong>el resto de mis días.</strong>
-    </p>
-    <p class="signature">con todo lo que soy — para mi niña de ojitos lindos 💜</p>
-  </div>
-
+<!-- YES SCREEN -->
+<div class="yes-screen" id="yesScreen">
+  <div class="yes-heart">💖</div>
+  <h2 class="yes-title">¡Qué felicidad!</h2>
+  <p style="font-size:1.4rem; font-style:italic; color:var(--burgundy); margin: 16px 0 24px;">
+    Eres oficialmente mi novia 🌹
+  </p>
+  <p class="yes-sub">Te quiero muchísimo, Mar</p>
 </div>
 
 <script>
-  // Generate stars
-  const starsEl = document.getElementById('stars');
-  for (let i = 0; i < 120; i++) {
-    const s = document.createElement('div');
-    s.className = 'star';
-    const size = Math.random() * 2.5 + 0.5;
-    s.style.cssText = `
-      width: ${size}px; height: ${size}px;
-      top: ${Math.random() * 100}%;
-      left: ${Math.random() * 100}%;
-      --d: ${2 + Math.random() * 4}s;
-      animation-delay: ${Math.random() * 4}s;
-    `;
-    starsEl.appendChild(s);
-  }
-
-  // Floating pixels
-  const pixelsEl = document.getElementById('pixels');
-  for (let i = 0; i < 30; i++) {
+  // Petals
+  const petalEmojis = ['🌸','🌹','✿','❀','🌺'];
+  const container = document.getElementById('petals');
+  for (let i = 0; i < 18; i++) {
     const p = document.createElement('div');
-    p.className = 'pixel';
-    p.style.cssText = `
-      bottom: ${Math.random() * 30}%;
-      left: ${Math.random() * 100}%;
-      --d: ${4 + Math.random() * 6}s;
-      --delay: ${Math.random() * 6}s;
-    `;
-    pixelsEl.appendChild(p);
+    p.className = 'petal';
+    p.textContent = petalEmojis[Math.floor(Math.random() * petalEmojis.length)];
+    p.style.left = Math.random() * 100 + 'vw';
+    p.style.animationDuration = (6 + Math.random() * 8) + 's';
+    p.style.animationDelay = (-Math.random() * 10) + 's';
+    p.style.fontSize = (0.8 + Math.random() * 0.8) + 'rem';
+    container.appendChild(p);
   }
 
-  // Heart cursor trail
-  document.addEventListener('mousemove', (e) => {
-    if (Math.random() > 0.85) {
-      const heart = document.createElement('div');
-      heart.className = 'heart-trail';
-      heart.textContent = ['💙','🌊','✦','⛏️'][Math.floor(Math.random()*4)];
-      heart.style.left = e.clientX + 'px';
-      heart.style.top  = e.clientY + 'px';
-      document.body.appendChild(heart);
-      setTimeout(() => heart.remove(), 1000);
+  // Load photos
+  function loadPhoto(input) {
+    const slot = input.closest('.photo-slot');
+    const img = slot.querySelector('img');
+    const placeholder = slot.querySelector('.photo-placeholder');
+    const file = input.files[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = e => {
+      img.src = e.target.result;
+      img.style.display = 'block';
+      placeholder.style.opacity = '0';
+    };
+    reader.readAsDataURL(file);
+  }
+
+  // No button runs away
+  function moveNo() {
+    const btn = document.getElementById('noBtn');
+    const vw = window.innerWidth - 150;
+    const vh = window.innerHeight - 60;
+    const x = Math.floor(Math.random() * vw);
+    const y = Math.floor(Math.random() * vh);
+    btn.style.position = 'fixed';
+    btn.style.left = x + 'px';
+    btn.style.top = y + 'px';
+    btn.style.zIndex = '50';
+  }
+
+  // Say yes
+  function sayYes() {
+    const screen = document.getElementById('yesScreen');
+    screen.classList.add('active');
+    // Confetti
+    const emojis = ['🌸','💕','🌹','✨','💖','🎀','🌺'];
+    for (let i = 0; i < 30; i++) {
+      const c = document.createElement('div');
+      c.className = 'confetti-piece';
+      c.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+      c.style.left = Math.random() * 100 + 'vw';
+      c.style.animationDuration = (2 + Math.random() * 2) + 's';
+      c.style.animationDelay = (Math.random() * 2) + 's';
+      document.body.appendChild(c);
     }
-  });
+  }
 </script>
 </body>
 </html>
