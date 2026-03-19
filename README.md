@@ -1,4 +1,3 @@
-
 <html lang="es">
 <head>
 <meta charset="UTF-8">
@@ -423,6 +422,78 @@
     .photo-slot:nth-child(4) { grid-column: 1; grid-row: 3; aspect-ratio: 4/3; }
     .photo-slot:nth-child(5) { grid-column: 2; grid-row: 3; aspect-ratio: 4/3; }
   }
+
+  /* EMBED PANEL */
+  .embed-panel {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: white;
+    border: 1px solid var(--blush);
+    border-radius: 8px;
+    padding: 16px 20px;
+    box-shadow: 0 8px 30px rgba(122,38,52,0.15);
+    z-index: 200;
+    max-width: 320px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.75rem;
+  }
+  .embed-panel h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    font-style: italic;
+    color: var(--burgundy);
+    margin-bottom: 10px;
+  }
+  .embed-panel p {
+    color: var(--text);
+    opacity: 0.7;
+    margin-bottom: 12px;
+    line-height: 1.5;
+  }
+  .embed-panel input[type="text"] {
+    width: 100%;
+    border: 1px solid var(--blush);
+    border-radius: 4px;
+    padding: 7px 10px;
+    font-size: 0.75rem;
+    margin-bottom: 8px;
+    color: var(--text);
+    outline: none;
+  }
+  .embed-panel input[type="text"]:focus { border-color: var(--rose); }
+  .embed-btn {
+    background: linear-gradient(135deg, var(--rose), var(--burgundy));
+    color: white;
+    border: none;
+    padding: 8px 18px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.72rem;
+    letter-spacing: 1px;
+    margin-right: 6px;
+  }
+  .embed-close {
+    background: transparent;
+    border: 1px solid var(--blush);
+    color: var(--rose);
+    padding: 8px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.72rem;
+  }
+  .slot-select { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 10px; }
+  .slot-btn {
+    background: var(--cream);
+    border: 1px solid var(--blush);
+    color: var(--rose);
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.7rem;
+    transition: all 0.2s;
+  }
+  .slot-btn.active { background: var(--rose); color: white; border-color: var(--rose); }
 </style>
 </head>
 <body>
@@ -452,45 +523,34 @@
   <div class="photos-grid">
     <div class="photo-slot" title="Agregar foto">
       <input type="file" accept="image/*" onchange="loadPhoto(this)">
-      <div class="photo-placeholder">
-        <span class="icon">🌸</span>
-        <p>Agregar foto</p>
-      </div>
-      <img>
+      <div class="photo-placeholder"><span class="icon">🌸</span><p>Agregar foto</p></div>
+      <img id="img-1">
     </div>
     <div class="photo-slot" title="Agregar foto">
       <input type="file" accept="image/*" onchange="loadPhoto(this)">
-      <div class="photo-placeholder">
-        <span class="icon">🌸</span>
-        <p>Agregar foto</p>
-      </div>
-      <img>
+      <div class="photo-placeholder"><span class="icon">🌸</span><p>Agregar foto</p></div>
+      <img id="img-2">
     </div>
     <div class="photo-slot" title="Agregar foto">
       <input type="file" accept="image/*" onchange="loadPhoto(this)">
-      <div class="photo-placeholder">
-        <span class="icon">🌸</span>
-        <p>Agregar foto</p>
-      </div>
-      <img>
+      <div class="photo-placeholder"><span class="icon">🌸</span><p>Agregar foto</p></div>
+      <img id="img-3">
     </div>
     <div class="photo-slot" title="Agregar foto">
       <input type="file" accept="image/*" onchange="loadPhoto(this)">
-      <div class="photo-placeholder">
-        <span class="icon">🌸</span>
-        <p>Agregar foto</p>
-      </div>
-      <img>
+      <div class="photo-placeholder"><span class="icon">🌸</span><p>Agregar foto</p></div>
+      <img id="img-4">
     </div>
     <div class="photo-slot" title="Agregar foto">
       <input type="file" accept="image/*" onchange="loadPhoto(this)">
-      <div class="photo-placeholder">
-        <span class="icon">🌸</span>
-        <p>Agregar foto</p>
-      </div>
-      <img>
+      <div class="photo-placeholder"><span class="icon">🌸</span><p>Agregar foto</p></div>
+      <img id="img-5">
     </div>
   </div>
+
+  <p style="font-family:'Montserrat',sans-serif; font-size:0.7rem; letter-spacing:3px; color:var(--gold); margin-top:-20px; margin-bottom:8px;">
+    ¿Tenés fotos en internet? <button onclick="showEmbedPanel()" style="background:none;border:none;color:var(--rose);cursor:pointer;font-size:0.7rem;letter-spacing:2px;text-decoration:underline;font-family:'Montserrat',sans-serif;">Pegá el link aquí</button>
+  </p>
 </section>
 
 <!-- MESSAGE -->
@@ -528,6 +588,24 @@
   <p class="yes-sub">Te quiero muchísimo, Mar</p>
 </div>
 
+<!-- EMBED PANEL -->
+<div class="embed-panel" id="embedPanel" style="display:none;">
+  <h3>Agregar foto por link 🌸</h3>
+  <p>Seleccioná el espacio y pegá el link de la imagen.</p>
+  <div class="slot-select">
+    <button class="slot-btn active" onclick="selectSlot(1,this)">Foto 1</button>
+    <button class="slot-btn" onclick="selectSlot(2,this)">Foto 2</button>
+    <button class="slot-btn" onclick="selectSlot(3,this)">Foto 3</button>
+    <button class="slot-btn" onclick="selectSlot(4,this)">Foto 4</button>
+    <button class="slot-btn" onclick="selectSlot(5,this)">Foto 5</button>
+  </div>
+  <input type="text" id="urlInput" placeholder="https://i.imgur.com/ejemplo.jpg">
+  <div>
+    <button class="embed-btn" onclick="applyUrl()">Poner foto</button>
+    <button class="embed-close" onclick="hideEmbedPanel()">Cerrar</button>
+  </div>
+</div>
+
 <script>
   // Petals
   const petalEmojis = ['🌸','🌹','✿','❀','🌺'];
@@ -543,7 +621,7 @@
     container.appendChild(p);
   }
 
-  // Load photos
+  // Load photos via file input
   function loadPhoto(input) {
     const slot = input.closest('.photo-slot');
     const img = slot.querySelector('img');
@@ -557,6 +635,27 @@
       placeholder.style.opacity = '0';
     };
     reader.readAsDataURL(file);
+  }
+
+  // Embed panel
+  let selectedSlot = 1;
+  function showEmbedPanel() { document.getElementById('embedPanel').style.display = 'block'; }
+  function hideEmbedPanel() { document.getElementById('embedPanel').style.display = 'none'; }
+  function selectSlot(n, btn) {
+    selectedSlot = n;
+    document.querySelectorAll('.slot-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+  }
+  function applyUrl() {
+    const url = document.getElementById('urlInput').value.trim();
+    if (!url) return;
+    const img = document.getElementById('img-' + selectedSlot);
+    const slot = img.closest('.photo-slot');
+    const placeholder = slot.querySelector('.photo-placeholder');
+    img.src = url;
+    img.style.display = 'block';
+    placeholder.style.opacity = '0';
+    document.getElementById('urlInput').value = '';
   }
 
   // No button runs away
@@ -576,7 +675,6 @@
   function sayYes() {
     const screen = document.getElementById('yesScreen');
     screen.classList.add('active');
-    // Confetti
     const emojis = ['🌸','💕','🌹','✨','💖','🎀','🌺'];
     for (let i = 0; i < 30; i++) {
       const c = document.createElement('div');
