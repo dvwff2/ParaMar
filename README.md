@@ -580,11 +580,12 @@
 <!-- YES SCREEN -->
 <div class="yes-screen" id="yesScreen">
   <div class="yes-heart">💖</div>
-  <h2 class="yes-title">¡Qué felicidad!</h2>
+  <h2 class="yes-title">¡Llenas mi corazón de alegria sñaldkfjds
+    Te amo demasiado<3!</h2>
   <p style="font-size:1.4rem; font-style:italic; color:var(--burgundy); margin: 16px 0 24px;">
-    Eres oficialmente mi novia 🌹
+    Ahora oficialmente somos novios mi amor<3 🌹
   </p>
-  <p class="yes-sub">Te quiero muchísimo, Mar</p>
+  <p class="yes-sub">Te amo demasiado, mi niña de ojos lindos 💜</p>
 </div>
 
 <!-- EMBED PANEL -->
