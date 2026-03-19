@@ -509,7 +509,7 @@
   <div class="divider" style="margin-bottom:40px;"><span class="divider-heart">♥</span></div>
   <h2 class="question-text">Y con la mano en el corazón, me gustaría preguntarte
   ¿Puedo ser tu novio?</h2>
-  <p class="question-sub">Mar · con todo mi corazón</p>
+  <p class="question-sub">Desde el fondo de mi corazón, Te amo, con todo mi, ser<3</p>
   <div class="buttons">
     <button class="btn-yes" onclick="sayYes()">Sí, quiero 💕</button>
     <button class="btn-no" id="noBtn" onmouseover="moveNo()" ontouchstart="moveNo()">Mmm...</button>
